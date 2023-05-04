@@ -1,0 +1,19 @@
+
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#results .book {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+}
+
+#results .book img {
+    height: 100px;
+}
