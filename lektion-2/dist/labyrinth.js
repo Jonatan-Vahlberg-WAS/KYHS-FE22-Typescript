@@ -13,12 +13,13 @@ var Space;
     Space[Space["Start"] = 2] = "Start";
     Space[Space["Goal"] = 3] = "Goal";
 })(Space || (Space = {}));
-var labyrinth = [
-    [Space.Wall, Space.Goal,],
-    [Space.Wall, Space.Path,],
-    [Space.Path, Space.Path,],
-    [Space.Start, Space.Wall,],
-];
+// const labyrinth: Labyrinth = [
+//     [Space.Wall,Space.Goal,],
+//     [Space.Wall,Space.Path,],
+//     [Space.Path,Space.Path,],
+//     [Space.Start,Space.Wall,],
+// ];
+var labyrinth = generateRandomLabyrinth();
 var rowIndex = labyrinth.findIndex(function (row) { return row.includes(Space.Start); });
 var columnIndex = labyrinth[rowIndex].findIndex(function (space) { return space === Space.Start; });
 var user = {
@@ -68,6 +69,31 @@ var user = {
 //     const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
 //     user.move(randomMove);
 // }while(!user.isFinished());
+function generateRandomLabyrinth() {
+    var labyrinth = [];
+    var width = Math.floor(Math.random() * 10) + 5;
+    var height = Math.floor(Math.random() * 10) + 5;
+    for (var i = 0; i < height; i++) {
+        var row = [];
+        for (var j = 0; j < width; j++) {
+            var randomSpace = Math.random();
+            if (randomSpace < 0.1) {
+                row.push(Space.Wall);
+            }
+            else {
+                row.push(Space.Path);
+            }
+        }
+        labyrinth.push(row);
+    }
+    var startRowIndex = Math.floor(Math.random() * labyrinth.length);
+    var startColumnIndex = Math.floor(Math.random() * labyrinth[startRowIndex].length);
+    labyrinth[startRowIndex][startColumnIndex] = Space.Start;
+    var goalRowIndex = Math.floor(Math.random() * labyrinth.length);
+    var goalColumnIndex = Math.floor(Math.random() * labyrinth[goalRowIndex].length);
+    labyrinth[goalRowIndex][goalColumnIndex] = Space.Goal;
+    return labyrinth;
+}
 // Map grid
 var mapElement = document.getElementById("map");
 var controlButtons = document.querySelectorAll("button");

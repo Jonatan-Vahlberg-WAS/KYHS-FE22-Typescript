@@ -23,12 +23,14 @@ interface User {
 
 type Labyrinth = Space[][];
 
-const labyrinth: Labyrinth = [
-    [Space.Wall,Space.Goal,],
-    [Space.Wall,Space.Path,],
-    [Space.Path,Space.Path,],
-    [Space.Start,Space.Wall,],
-];
+// const labyrinth: Labyrinth = [
+//     [Space.Wall,Space.Goal,],
+//     [Space.Wall,Space.Path,],
+//     [Space.Path,Space.Path,],
+//     [Space.Start,Space.Wall,],
+// ];
+
+const labyrinth: Labyrinth = generateRandomLabyrinth();
 
 const rowIndex = labyrinth.findIndex(row => row.includes(Space.Start));
 const columnIndex = labyrinth[rowIndex].findIndex(space => space === Space.Start);
@@ -83,6 +85,31 @@ const user: User = {
 //     const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
 //     user.move(randomMove);
 // }while(!user.isFinished());
+
+function generateRandomLabyrinth(){
+    const labyrinth: Labyrinth = [];
+    const width = Math.floor(Math.random() * 10) + 5;
+    const height = Math.floor(Math.random() * 10) + 5;
+    for(let i = 0; i < height; i++) {
+        const row: Space[] = [];
+        for(let j = 0; j < width; j++) {
+            const randomSpace = Math.random();
+            if(randomSpace < 0.1) {
+                row.push(Space.Wall);
+            }else {
+                row.push(Space.Path);
+            }
+        }
+        labyrinth.push(row);
+    }
+    const startRowIndex = Math.floor(Math.random() * labyrinth.length);
+    const startColumnIndex = Math.floor(Math.random() * labyrinth[startRowIndex].length);
+    labyrinth[startRowIndex][startColumnIndex] = Space.Start;
+    const goalRowIndex = Math.floor(Math.random() * labyrinth.length);
+    const goalColumnIndex = Math.floor(Math.random() * labyrinth[goalRowIndex].length);
+    labyrinth[goalRowIndex][goalColumnIndex] = Space.Goal;
+    return labyrinth;
+}
 
 // Map grid
 const mapElement = document.getElementById("map");
