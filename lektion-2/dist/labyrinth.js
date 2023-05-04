@@ -52,7 +52,6 @@ var user = {
             return;
         }
         console.log("Valid move: ".concat(direction));
-        console.log("New position: ".concat(nextPosition));
         this.position = nextPosition;
     },
     isFinished: function () {
@@ -72,12 +71,13 @@ var user = {
 function generateRandomLabyrinth() {
     var labyrinth = [];
     var width = Math.floor(Math.random() * 10) + 5;
-    var height = Math.floor(Math.random() * 10) + 5;
+    var height = width;
+    var wallChance = 0.2;
     for (var i = 0; i < height; i++) {
         var row = [];
         for (var j = 0; j < width; j++) {
             var randomSpace = Math.random();
-            if (randomSpace < 0.1) {
+            if (randomSpace < wallChance) {
                 row.push(Space.Wall);
             }
             else {
@@ -127,7 +127,6 @@ function renderMap() {
         });
     });
 }
-renderMap();
 controlButtons.forEach(function (button) {
     button.addEventListener("click", function () {
         var direction = button.getAttribute("data-action");
@@ -145,3 +144,4 @@ controlButtons.forEach(function (button) {
         }
     });
 });
+renderMap();

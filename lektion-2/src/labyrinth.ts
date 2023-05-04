@@ -68,7 +68,6 @@ const user: User = {
             return;
         }
         console.log(`Valid move: ${direction}`);
-        console.log(`New position: ${nextPosition}`);
         this.position = nextPosition;
     },
     isFinished: function() {
@@ -88,13 +87,17 @@ const user: User = {
 
 function generateRandomLabyrinth(){
     const labyrinth: Labyrinth = [];
+
     const width = Math.floor(Math.random() * 10) + 5;
-    const height = Math.floor(Math.random() * 10) + 5;
+    const height = width;
+
+    const wallChance = 0.2
+    
     for(let i = 0; i < height; i++) {
         const row: Space[] = [];
         for(let j = 0; j < width; j++) {
             const randomSpace = Math.random();
-            if(randomSpace < 0.1) {
+            if(randomSpace < wallChance) {
                 row.push(Space.Wall);
             }else {
                 row.push(Space.Path);
@@ -148,8 +151,6 @@ function renderMap() {
 }
 
 
-renderMap();
-
 controlButtons.forEach(button => {
     button.addEventListener("click", () => {
         const direction = button.getAttribute("data-action");
@@ -169,3 +170,5 @@ controlButtons.forEach(button => {
         }
     })
 })
+
+renderMap();
