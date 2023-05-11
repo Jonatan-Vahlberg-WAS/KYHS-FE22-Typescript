@@ -1,0 +1,55 @@
+    {
+    "id": 1,
+    "name": "Ekonomistyrning",
+    "lectures": [
+        {
+            "id": 1,
+            "name": "Introduktion till Ekonomistyrning",
+            "abstract": "I denna lektion kommer vi att gå igenom grundläggande begrepp och principer inom ekonomistyrning.",
+            "lecture_sections": [
+                {
+                    "id": 1,
+                    "name": "Ekonomistyrningens grundläggande begrepp",
+                    "content": "I denna sektion kommer vi att gå igenom följande begrepp: ekonomiskt resultat, intäkter, kostnader, utgifter, tillgångar och skulder.",
+                    "questions": [
+                        {
+                            "id": 1,
+                            "title": "Vad är ekonomiskt resultat?",
+                            "question": "Vad är definitionen av ekonomiskt resultat?",
+                            "correct_answer": "Ekonomiskt resultat är skillnaden mellan intäkter och kostnader under en viss period.",
+                            "question_type": "FreeText"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Vad är en tillgång?",
+                            "question": "Vad är definitionen av en tillgång?",
+                            "correct_answer": "En tillgång är en resurs som ägs av företaget och som förväntas ge en ekonomisk fördel i framtiden.",
+                            "question_type": "FreeText"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Ekonomistyrningens principer",
+                    "content": "I denna sektion kommer vi att diskutera följande principer: kostnadsreducering, intäktsmaximering, vinstmaximering, kapitalbudgetering och likviditetsbudgetering.",
+                    "questions": [
+                        {
+                            "id": 3,
+                            "title": "Vad är kostnadsreducering?",
+                            "question": "Vad är definitionen av kostnadsreducering?",
+                            "correct_answer": "Kostnadsreducering är en strategi som syftar till att minska företagets kostnader genom effektivisering av processer, produktionsmetoder eller inköp.",
+                            "question_type": "FreeText"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Vad är kapitalbudgetering?",
+                            "question": "Vad är definitionen av kapitalbudgetering?",
+                            "correct_answer": "Kapitalbudgetering är en process för att välja vilka projekt som ska finansieras och hur mycket kapital som ska allokeras till varje projekt baserat på dess förväntade avkastning och risk.",
+                            "question_type": "FreeText"
+                        }
+                    ]
+                }
+            ]
+        }
+        ]
+    }
