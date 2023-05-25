@@ -7,7 +7,7 @@ interface Theme {
   fontFamily: string;
 }
 
-const initialState: Theme = {
+export const initialTheme: Theme = {
     primaryColor: '#343889',
     secondaryColor: '#f5f5f5',
     fontFamily: 'sans-serif',
@@ -21,12 +21,12 @@ const ThemeContext = React.createContext<{
     theme: Theme;
     updateTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }>({
-    theme: initialState,
+    theme: initialTheme,
     updateTheme: () => {},
 });
 
 export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
-    const [theme, setTheme] = React.useState<Theme>(initialState);
+    const [theme, setTheme] = React.useState<Theme>(initialTheme);
   return (
     <ThemeContext.Provider value={{ 
         theme, 
@@ -35,4 +35,10 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
   );
 };
 
-export default ThemeContext;
+export const useTheme = () => {
+    const context = React.useContext(ThemeContext);
+    if (context === undefined) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
+}

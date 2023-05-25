@@ -45,5 +45,3 @@ const useLibrary = () => {
 }
 
 export { LibraryProvider, useLibrary };
-
-useLibrary().state.books
