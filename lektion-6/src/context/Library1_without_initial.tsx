@@ -13,7 +13,10 @@ interface LibraryState {
   selectedBookId?: number;
 }
 //Create the context using partial state
-const LibraryContext = createContext<Partial<LibraryState>>({});
+const LibraryContext = createContext<Partial<{
+    state: LibraryState;
+    setState: React.Dispatch<React.SetStateAction<LibraryState>>;
+}>>({});
 
 //ProviderProps
 interface LibraryProviderProps {
@@ -31,3 +34,16 @@ const LibraryProvider: React.FC<LibraryProviderProps> = ({ children }) => {
         </LibraryContext.Provider>
     );
 };
+
+//Create the useLibrary hook
+const useLibrary = () => {
+    const context = useContext(LibraryContext);
+    if (context === undefined) {
+        throw new Error('useLibrary must be used within a LibraryProvider');
+    }
+    return context;
+}
+
+export { LibraryProvider, useLibrary };
+
+useLibrary().state.books
