@@ -126,3 +126,38 @@ function filterProducts(products, filter) {
 }
 console.log("Filtered products (non empty)", filterProducts(products, filterOnEmpty));
 console.log("Filtered products (Only melons)", filterProducts(products, function (product) { return filterOnName(product, "melon"); }));
+function paymentStatus(totalAmount, paidAmount) {
+    if (totalAmount < paidAmount) {
+        return {
+            statusCode: 402,
+            message: "Payment failed. Insufficient funds"
+        };
+    }
+    return {
+        statusCode: 200,
+        message: "Payment Successful"
+    };
+}
+//404 - Account not found
+var accounts = [{
+        id: 2,
+        balance: 200,
+    },
+    {
+        id: 18,
+        balance: 50
+    }
+];
+function validateCustomerData(accountId, paidAmount) {
+    var foundAccountIndex = accounts.findIndex(function (acc) { return acc.id === accountId; });
+    if (foundAccountIndex === -1) {
+        return {
+            statusCode: 404,
+            message: "Account not found"
+        };
+    }
+    return paymentStatus(accounts[foundAccountIndex].balance, paidAmount);
+}
+console.log(validateCustomerData(2, 250));
+console.log(validateCustomerData(18, 25));
+console.log(validateCustomerData(38, 100000));

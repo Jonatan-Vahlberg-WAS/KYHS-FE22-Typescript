@@ -208,3 +208,57 @@ function filterProducts(products: Product[], filter: (product: Product) => boole
 
 console.log("Filtered products (non empty)", filterProducts(products, filterOnEmpty))
 console.log("Filtered products (Only melons)", filterProducts(products, (product) => filterOnName(product, "melon")))
+
+type Status = {
+    statusCode: 402 | 200 | 404
+    message: string
+}
+
+type Account = {
+    id: number;
+    balance: number;
+}
+
+function paymentStatus(totalAmount: number, paidAmount: number): Status {
+
+    if(totalAmount < paidAmount) {
+        return {
+            statusCode: 402,
+            message: "Payment failed. Insufficient funds"
+        }
+    }
+
+    return {
+        statusCode: 200,
+        message: "Payment Successful"
+    }
+}
+
+
+
+//404 - Account not found
+const accounts: Account[] = [{
+    id: 2,
+    balance: 200,},
+    {
+        id: 18,
+        balance: 50
+    }
+]
+
+function validateCustomerData(accountId: number, paidAmount: number): Status {
+    const foundAccountIndex = accounts.findIndex((acc) => acc.id === accountId)
+
+    if(foundAccountIndex === -1){
+        return {
+            statusCode: 404,
+            message: "Account not found"
+        }
+    }
+
+    return paymentStatus(accounts[foundAccountIndex].balance, paidAmount)
+}
+
+console.log(validateCustomerData(2,250))
+console.log(validateCustomerData(18,25))
+console.log(validateCustomerData(38,100000))
