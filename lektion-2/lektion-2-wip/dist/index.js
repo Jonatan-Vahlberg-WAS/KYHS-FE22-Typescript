@@ -67,6 +67,7 @@ var StatusCode;
     StatusCode[StatusCode["CREATED"] = 201] = "CREATED";
     StatusCode[StatusCode["UNALLOWED"] = 401] = "UNALLOWED";
     StatusCode[StatusCode["NOT_FOUND"] = 404] = "NOT_FOUND";
+    StatusCode[StatusCode["INTERNAL_SERVER_ERROR"] = 500] = "INTERNAL_SERVER_ERROR";
 })(StatusCode || (StatusCode = {}));
 var RequestType;
 (function (RequestType) {

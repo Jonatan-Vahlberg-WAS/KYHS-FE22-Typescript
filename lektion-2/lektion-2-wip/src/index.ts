@@ -97,6 +97,7 @@ enum StatusCode {
     CREATED = 201,
     UNALLOWED = 401,
     NOT_FOUND = 404,
+    INTERNAL_SERVER_ERROR = 500
 }
 
 enum RequestType {
