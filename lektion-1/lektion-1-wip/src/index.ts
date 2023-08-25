@@ -2,6 +2,13 @@ type Product = {
     name: string;
     price: number;
     quantity: number;
+    raisePrice?: () => void
+}
+
+type Electronic = {
+    kind: "COMPUTER" | "MOBILE";
+    motherboard: string; 
+    simCard?: string
 }
 
 //implicit
@@ -102,112 +109,112 @@ const products: {
     quantity: number
 }[] = []
 
-function addProduct(name: string, price: number, quantity: number): {
-    name: string
-    price: number
-    quantity: number
-} {
-    return { name, price, quantity}
-}
+// function addProduct(name: string, price: number, quantity: number): {
+//     name: string
+//     price: number
+//     quantity: number
+// } {
+//     return { name, price, quantity}
+// }
 
-products.push(addProduct("Apple", 10, 3))
-products.push(addProduct("Orange", 7, 1))
-products.push(addProduct("Melon", 12, 2))
-products.push(addProduct("WaterMelon", 22, 1))
-products.push(addProduct("Tomato", 8, 5))
-products.push(addProduct("Paprika", 8, 0))
-products.push(addProduct("Lettuce", 8, 5))
+// products.push(addProduct("Apple", 10, 3))
+// products.push(addProduct("Orange", 7, 1))
+// products.push(addProduct("Melon", 12, 2))
+// products.push(addProduct("WaterMelon", 22, 1))
+// products.push(addProduct("Tomato", 8, 5))
+// products.push(addProduct("Paprika", 8, 0))
+// products.push(addProduct("Lettuce", 8, 5))
 
-products.forEach(product => console.log(`${product.name}: ${product.quantity} * ${product.price}kr`))
-
-
-/* 
-2. Create a function that takes in an array of product objects and returns the total cost of all products.
-*/
-
-function getProductTotal (products: {
-    name: string
-    price: number
-    quantity: number
-}[]): number {
-    // 1 foreach
-    let total = 0;
-    products.forEach(p => {
-        total += (p.price * p.quantity)
-    }) 
-    return total
-
-    // 2 map, reduce
-    return products.map(p => p.price * p.quantity).reduce((acc, current) => acc + current)
-}
-
-console.log("Total is: ", getProductTotal(products))
-
-//3 Create a function that takes in a product object and updates its quantity in storage.
-function updateProductQuantity(product: Product, quantity: number): Product {
-    product.quantity = quantity
-    return product
-}
-
-products[1] = updateProductQuantity(products[1], 10)
+// products.forEach(product => console.log(`${product.name}: ${product.quantity} * ${product.price}kr`))
 
 
-console.log("Total is (after quantity change): ", getProductTotal(products))
+// /* 
+// 2. Create a function that takes in an array of product objects and returns the total cost of all products.
+// */
+
+// function getProductTotal (products: {
+//     name: string
+//     price: number
+//     quantity: number
+// }[]): number {
+//     // 1 foreach
+//     let total = 0;
+//     products.forEach(p => {
+//         total += (p.price * p.quantity)
+//     }) 
+//     return total
+
+//     // 2 map, reduce
+//     return products.map(p => p.price * p.quantity).reduce((acc, current) => acc + current)
+// }
+
+// console.log("Total is: ", getProductTotal(products))
+
+// //3 Create a function that takes in a product object and updates its quantity in storage.
+// function updateProductQuantity(product: Product, quantity: number): Product {
+//     product.quantity = quantity
+//     return product
+// }
+
+// products[1] = updateProductQuantity(products[1], 10)
 
 
-//! Optional
-//1 Create a function that takes in an array of product objects and a 
-//  discount percentage, and returns the total cost of all products after discount.
-
-//Refactored version: Create a function that takes in a total and a 
-//discount percentage, and returns the total cost of all products after discount.
+// console.log("Total is (after quantity change): ", getProductTotal(products))
 
 
-function getDiscountedTotal(total: number, discount: number): number {
+// //! Optional
+// //1 Create a function that takes in an array of product objects and a 
+// //  discount percentage, and returns the total cost of all products after discount.
 
-    const totalDiscount = total * discount
-
-    return total - totalDiscount
-} 
-
-console.log("Total is (after discount): ", getDiscountedTotal(getProductTotal(products),0.10))
+// //Refactored version: Create a function that takes in a total and a 
+// //discount percentage, and returns the total cost of all products after discount.
 
 
-//2. Create a function that takes in an array of product objects 
-//and a tax rate, and returns the total cost of all products after tax.
+// function getDiscountedTotal(total: number, discount: number): number {
 
-function getTaxedTotal(total: number, taxrate: number): number {
-    const taxOfTotal = total * taxrate
-    return total + taxOfTotal
-}
+//     const totalDiscount = total * discount
 
-console.log("Total is (after tax, and discount): ", 
-    getTaxedTotal(
-        getDiscountedTotal(
-            getProductTotal(products),
-            0.10),
-        0.13
-    )
-)
+//     return total - totalDiscount
+// } 
+
+// console.log("Total is (after discount): ", getDiscountedTotal(getProductTotal(products),0.10))
 
 
-//3. Create a function that takes in an array of product objects and a 
-//filter function, and returns an array of products that pass the filter function.
+// //2. Create a function that takes in an array of product objects 
+// //and a tax rate, and returns the total cost of all products after tax.
 
-const filterOnEmpty = (product: Product): boolean => {
-    return product.quantity > 0
-}
+// function getTaxedTotal(total: number, taxrate: number): number {
+//     const taxOfTotal = total * taxrate
+//     return total + taxOfTotal
+// }
 
-const filterOnName = (product: Product, name: string) => {
-    return product.name.toLowerCase().includes(name)
-}
+// console.log("Total is (after tax, and discount): ", 
+//     getTaxedTotal(
+//         getDiscountedTotal(
+//             getProductTotal(products),
+//             0.10),
+//         0.13
+//     )
+// )
 
-function filterProducts(products: Product[], filter: (product: Product) => boolean): Product[] {
-    return products.filter(filter)
-}
 
-console.log("Filtered products (non empty)", filterProducts(products, filterOnEmpty))
-console.log("Filtered products (Only melons)", filterProducts(products, (product) => filterOnName(product, "melon")))
+// //3. Create a function that takes in an array of product objects and a 
+// //filter function, and returns an array of products that pass the filter function.
+
+// const filterOnEmpty = (product: Product): boolean => {
+//     return product.quantity > 0
+// }
+
+// const filterOnName = (product: Product, name: string) => {
+//     return product.name.toLowerCase().includes(name)
+// }
+
+// function filterProducts(products: Product[], filter: (product: Product) => boolean): Product[] {
+//     return products.filter(filter)
+// }
+
+// console.log("Filtered products (non empty)", filterProducts(products, filterOnEmpty))
+// console.log("Filtered products (Only melons)", filterProducts(products, (product) => filterOnName(product, "melon")))
 
 type Status = {
     statusCode: 402 | 200 | 404
