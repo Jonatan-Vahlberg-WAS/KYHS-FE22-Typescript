@@ -106,3 +106,6 @@ console.log(simulatedNetworkRequest(RequestType.NA, database, databaseEndpoints[
 console.log(simulatedNetworkRequest(RequestType.POST, database, databaseEndpoints[0]));
 console.log(simulatedNetworkRequest(RequestType.GET, database, databaseEndpoints[1]));
 console.log(simulatedNetworkRequest(RequestType.GET, database, "test"));
+// used mostly on the fly and not pre defined
+var CustomTextInput = function (props) {
+};

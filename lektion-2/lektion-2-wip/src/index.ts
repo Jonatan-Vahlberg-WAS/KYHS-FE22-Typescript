@@ -141,3 +141,39 @@ console.log(simulatedNetworkRequest(RequestType.NA,database,databaseEndpoints[1]
 console.log(simulatedNetworkRequest(RequestType.POST,database,databaseEndpoints[0]))
 console.log(simulatedNetworkRequest(RequestType.GET,database,databaseEndpoints[1]))
 console.log(simulatedNetworkRequest(RequestType.GET,database,"test"))
+
+
+type Person25Afternoon = {
+    name: string;
+    age: number;
+}
+    
+type Address = {
+    street: string;
+    city: string;
+    zipCode: string;
+}
+
+type PersonWithAddress = Person25Afternoon & Address;
+
+type TextInputProps = {
+    color: any;
+    style: {}
+    //100s more
+}
+
+// used mostly on the fly and not pre defined
+const CustomTextInput = (props: TextInputProps & {
+    hasValidation: boolean
+}) => {
+
+}
+
+//TYPE defined
+type Animal = {}
+
+type Snake = {} & Animal
+
+//INTERFACE defined
+interface Insect {}
+interface FireAnt extends Insect {}
