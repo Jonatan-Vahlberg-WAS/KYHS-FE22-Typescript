@@ -116,12 +116,28 @@ const databaseEndpoints = [
     "users/18"
 ]
 
-function simulatedNetworkRequest(){
-    //todo requests have to have a RequestMethod a db and a endpoint
+function simulatedNetworkRequest(requestType: RequestType, db: string, endpoint: string): StatusCode {
 
-    //todo requests landing in the down database should return 500
+    // requests have to have a RequestType a db and a endpoint
+    
+    // requests landing in the down database should return 500
+    if(db === downDatabase) return StatusCode.INTERNAL_SERVER_ERROR
 
-    //todo requests landing in the normal db has to correspond with an endpoint otherwise 404
-
-    //todo POST generate 201 GET 200 and any attempt at interacting with user 1 results in 401
+    // if requestType is NA should return 500
+    if(!requestType) return StatusCode.INTERNAL_SERVER_ERROR
+    
+    // requests landing in the normal db has to correspond with an endpoint otherwise 404
+    if(!databaseEndpoints.includes(endpoint)) return StatusCode.NOT_FOUND 
+    // interacting with user 1 results in 401
+    if(endpoint === databaseEndpoints[0]) return StatusCode.UNALLOWED
+    
+    // POST generates 201 and PUT and GET 200
+    return requestType === RequestType.POST ? StatusCode.CREATED : StatusCode.OK
 }
+
+console.log(simulatedNetworkRequest(RequestType.POST,database,databaseEndpoints[1]))
+console.log(simulatedNetworkRequest(RequestType.POST,downDatabase,databaseEndpoints[1]))
+console.log(simulatedNetworkRequest(RequestType.NA,database,databaseEndpoints[1]))
+console.log(simulatedNetworkRequest(RequestType.POST,database,databaseEndpoints[0]))
+console.log(simulatedNetworkRequest(RequestType.GET,database,databaseEndpoints[1]))
+console.log(simulatedNetworkRequest(RequestType.GET,database,"test"))
