@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Generics from './Generics';
 import GenericsFunct from './GenericFunct';
 import GenericClasses from './GenericClasses';
+import TypeAssertions from './TypeAssertions';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,7 +23,8 @@ root.render(
   <React.StrictMode>
     {/* <Generics/>
     <GenericsFunct/> */}
-    <GenericClasses/>
+    {/* <GenericClasses/> */}
+    <TypeAssertions/>
   </React.StrictMode>
 );
 
