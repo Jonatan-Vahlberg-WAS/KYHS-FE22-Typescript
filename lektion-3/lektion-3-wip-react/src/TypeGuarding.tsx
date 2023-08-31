@@ -45,18 +45,18 @@ class NonProduct {
 function printProductDetails(product: GenericProduct): void {
     if (product.category === ProductCategory.Food) {
         //Will not work as is type
-      if (product instanceof FoodProduct) {
-        console.log("Food Type:", product.foodType);
-      } else {
-        console.log("Invalid product type for FoodProduct");
-      }
+    //   if (product instanceof FoodProduct) {
+    //     console.log("Food Type:", product.foodType);
+    //   } else {
+    //     console.log("Invalid product type for FoodProduct");
+    //   }
     } else if (product.category === ProductCategory.Electronics) {
         //Will not work as is type
-      if (product instanceof ElectronicProduct) {
-        console.log("Voltage:", product.voltage);
-      } else {
-        console.log("Invalid product type for ElectronicProduct");
-      }
+    //   if (product instanceof ElectronicProduct) {
+    //     console.log("Voltage:", product.voltage);
+    //   } else {
+    //     console.log("Invalid product type for ElectronicProduct");
+    //   }
       //Will work as it is a class instance
     } else if(product instanceof NonProduct){
       console.log("Invalid product category");
