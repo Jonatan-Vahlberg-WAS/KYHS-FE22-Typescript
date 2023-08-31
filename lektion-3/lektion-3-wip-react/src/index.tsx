@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Generics from './Generics';
+import GenericsFunct from './GenericFunct';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ const [first, second, third] = unDestructuredArray;
 root.render(
   <React.StrictMode>
     <Generics/>
+    <GenericsFunct/>
   </React.StrictMode>
 );
 
