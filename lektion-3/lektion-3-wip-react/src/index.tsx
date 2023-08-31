@@ -6,6 +6,7 @@ import Generics from './Generics';
 import GenericsFunct from './GenericFunct';
 import GenericClasses from './GenericClasses';
 import TypeAssertions from './TypeAssertions';
+import TypeGuarding from './TypeGuarding';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,6 +26,7 @@ root.render(
     <GenericsFunct/> */}
     {/* <GenericClasses/> */}
     <TypeAssertions/>
+    <TypeGuarding/>
   </React.StrictMode>
 );
 
