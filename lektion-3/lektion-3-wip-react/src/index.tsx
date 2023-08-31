@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Generics from './Generics';
 import GenericsFunct from './GenericFunct';
+import GenericClasses from './GenericClasses';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,8 +20,9 @@ const [first, second, third] = unDestructuredArray;
 
 root.render(
   <React.StrictMode>
-    <Generics/>
-    <GenericsFunct/>
+    {/* <Generics/>
+    <GenericsFunct/> */}
+    <GenericClasses/>
   </React.StrictMode>
 );
 
