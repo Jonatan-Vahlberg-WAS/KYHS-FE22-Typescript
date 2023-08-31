@@ -39,7 +39,6 @@ const Generics = () => {
         { name: "Moa"}
     ]
 
-    const people
 
     return <div>
         Generics
