@@ -2,8 +2,12 @@
 
 //Generate a generic task that uses the following: generic functions and arguments
 
-// 1. Create a generic function that takes in a value of type and returns that value
-// 2. Create a generic function that takes in a value of type T and a array of type T and returns the array with the value added to it
+// 1. Create a generic function that takes in a value of type and returns 
+    // that value
+    
+// 2. Create a generic function that takes in a value of type T and a 
+    // array of type T and returns the array with the value added to it
+
 // 3. Create a generic function that takes in a array of type T and designation of type T and returns a array of arrays of type T
     // 3.1. splits the array at a designated value of type T
 
