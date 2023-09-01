@@ -21,7 +21,6 @@ const Text = (props: TextProps) => {
     return <p {...props}>
         {words.map((word, index) => {
             if(index === highlightedWordIndex){
-                setHighlightClickCounter(state => state+1)
                 return <strong onClick={props.onClickHiglightedWord}
                 >{word} </strong>
             }
