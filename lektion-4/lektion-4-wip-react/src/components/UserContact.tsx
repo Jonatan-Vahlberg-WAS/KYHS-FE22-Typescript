@@ -1,12 +1,5 @@
 import { useState } from "react"
-import Userinfo from "./Userinfo";
-
-
-export interface User {
-    name: string;
-    age: number;
-    email: string;
-}
+import Userinfo from "./Userinfo"; 
 
 const UserContact = () => {
     const [user, setUser] = useState<User | undefined>({

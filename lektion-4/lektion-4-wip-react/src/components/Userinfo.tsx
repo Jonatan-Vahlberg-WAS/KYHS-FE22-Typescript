@@ -1,16 +1,5 @@
-/*
-<UserInfo 
-				name="John Doe" 
-				age={25} 
-				email="johndoe@example.com" 
-				greeting="Hello">
-	        I can only be a string
-      </UserInfo>
-*/
-
 import React, { useState } from "react";
 import Card from "./Card";
-import { User } from "./UserContact";
 
 interface UserinfoProps {
     user: User;
